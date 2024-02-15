@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Posts Page</title>
+</head>
+<body>
+    <div>
+        <h1> {{ title }} </h1>
+
+        {% if perms.blog.add_post %}
+        <a href="{% url 'create_post' %}">Create Post</a>
+        {% endif %}
+
+        <div>
+            {% for post in posts %}
+            <div>
+                <h3> {{post.title}} </h3>
+                <p> <strong>Автор:</strong> {{ post.author.username }} </p>
+                <p> <strong>Текст:</strong> {{post.text}} </p>
+                <hr/>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
